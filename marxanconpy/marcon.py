@@ -199,14 +199,14 @@ def validate_project(project):
     if not 'operating_system' in project:
         project['operating_system'] = 'Windows'
 
-    if project['operating_system'] == 'Windows' and platform.system() == 'Darwin':
+    if project['operating_system'] == 'Windows' and platform.system() != 'Windows':
         print("Warning: This project file was created with a different operating system. Attempting to "
               "update for compatibility")
         for p in project['filepaths']:
             project['filepaths'][p] = project['filepaths'][p].replace('\\','/')
 
 
-    if project['operating_system'] == 'Darwin' and platform.system() == 'Windows':
+    if project['operating_system'] != 'Windows' and platform.system() == 'Windows':
         print("Warning: This project file was created with a different operating system. Attempting to "
               "update for compatibility")
         for p in project['filepaths']:
