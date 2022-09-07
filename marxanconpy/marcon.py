@@ -5,6 +5,8 @@ import marxanconpy
 import pathlib
 import platform
 
+from collections import defaultdict
+
 def new_project(rootpath='.'):
     """ New Project
     Create a new project dictionary
@@ -16,7 +18,7 @@ def new_project(rootpath='.'):
     project['version']['marxanconpy'] = marxanconpy.__version__
     project['version']['MarxanConnect'] = 'NA'
     project['operating_system'] = platform.system()
-    project['filepaths'] = {}
+    project['filepaths'] = defaultdict(str)
     project['options'] = {}
 
     # set default options
