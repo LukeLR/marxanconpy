@@ -191,6 +191,11 @@ def validate_project(project):
     :param project: the project dictionary
     :return: dict
     """
+    filepaths = project['filepaths']
+    project['filepaths'] = defaultdict(str)
+    for key, value in filepaths.items():
+        project['filepaths'][key] = value
+    
     if not 'operating_system' in project:
         project['operating_system'] = 'Windows'
 
